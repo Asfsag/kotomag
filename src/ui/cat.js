@@ -215,8 +215,8 @@
         else if (lift <= 0.5 && now > runSeq.pounceAt) {
           vy = -340; lift = 1; lastActivity = now;
           if (runSeq.kind === 'mouse' && mouseObj) {
-            if (Math.random() < 0.5) { burstAt(mouseObj.x - catX + 26, OY + 82, 14, ['#ffffff', '#ffb3c1', '#ffd447'], 34); removeMouse(false); runSeq.until = now + 900; say(T('act.mouse.catch'), 250, 1200); runSeq.pounceAt = now + 5000; }
-            else { mouseObj.state = 'run'; mouseObj.dir = mouseObj.x > catX ? 1 : -1; mouseObj.v = 330; mouseObj.until = now + 900; runSeq.pounceAt = now + 1400; say(T('act.mouse.miss'), 250, 1000); }
+            if (Math.random() < 0.5) { burstAt(mouseObj.x - catX + 26, OY + 82, 14, ['#ffffff', '#ffb3c1', '#ffd447'], 34); removeMouse(false); runSeq.until = now + 900; say(T('act.mouse.catch'), 250, 1200, 0, false, true); runSeq.pounceAt = now + 5000; }
+            else { mouseObj.state = 'run'; mouseObj.dir = mouseObj.x > catX ? 1 : -1; mouseObj.v = 330; mouseObj.until = now + 900; runSeq.pounceAt = now + 1400; say(T('act.mouse.miss'), 250, 1000, 0, false, true); }
           } else runSeq.pounceAt = now + rnd(1800, 4200);
         }
       }
@@ -323,7 +323,7 @@
         }
         Z.t = t; Z.tR = tR;
       } else if (k === 'hat') {
-        const H = yarn.hat || (yarn.hat = { item: pick(['rabbit', 'rabbit', 'duck', 'flower', 'star', 'heart']) });
+        const H = yarn.hat || (yarn.hat = { item: window.__hi || pick(['rabbit', 'rabbit', 'duck', 'flower', 'star', 'heart']) });
         const T1 = 16 * 110, T2 = T1 + 560, tt = t - T2, HOLD = 2400;
         if (t < T1) { H.phase = 'off'; set = 'hat1'; idx = Math.min(15, Math.floor(t / 110)); }
         else if (t < T2) { H.phase = 'pause'; set = 'hat1'; idx = 15; }
@@ -767,7 +767,7 @@
     liftEl2.appendChild(im); fishItem = im;
     const lx = bx + dir * Math.max(0, iw / 2 - 34), ly = by - Math.round(ih * 0.3), apx = (bx + OX + 48) / 2, apy = OY - 62, c = (x, y, r, s) => `translate(${Math.round(x - iw / 2)}px,${Math.round(y - ih / 2)}px) rotate(${r}deg) scale(${s})`;
     im.animate([{ transform: c(bx, by, 0, 0.6), easing: 'cubic-bezier(.2,.7,.4,1)' }, { transform: c(apx, apy, dir * 200, 1.15), offset: 0.5, easing: 'cubic-bezier(.6,0,.9,.4)' }, { transform: c(lx, ly, dir * 360, 1) }], { duration: 1250, fill: 'forwards' });
-    setTimeout(() => { burstAt(lx, ly, 8, ['#ffffff', '#ffd447'], 22); SND.land(); say(T('catch.' + F.item), 100, 1600); }, 1250);
+    setTimeout(() => { burstAt(lx, ly, 8, ['#ffffff', '#ffd447'], 22); SND.land(); say(T('catch.' + F.item), 100, 1600, 0, false, true); }, 1250);
     setTimeout(() => { if (im.parentNode) { im.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 400, fill: 'forwards' }); setTimeout(() => im.remove(), 420); } }, 1250 + 1500);
   }
 
@@ -802,12 +802,12 @@
     if (grow >= 1 && Math.random() < dt * rate) { const e = mkFx('fxp', mx + rnd(-9, 9), my + rnd(-1, 2), { '--pc': Z.color }); e.style.animation = 'none'; e.style.borderRadius = '50%'; const sz = rnd(3, 6); e.style.width = e.style.height = sz + 'px'; e.animate([{ transform: 'translate(0,0) scale(.4)', opacity: .9 }, { transform: `translate(${rnd(-6, 6)}px,${-rnd(14, 26)}px) scale(1.2)`, opacity: 0 }], { duration: rnd(600, 1000), fill: 'forwards' }); setTimeout(() => e.remove(), 1100); }
     if (grow >= 1 && Math.random() < dt * 4) { const e = mkFx('fxp', mx + rnd(-8, 8), my - 3, { '--pc': '#e8e8f4' }); e.style.animation = 'none'; e.style.borderRadius = '50%'; e.style.width = e.style.height = '9px'; e.style.opacity = '.55'; e.animate([{ transform: 'translate(0,0) scale(.5)', opacity: .5 }, { transform: `translate(${rnd(-8, 8)}px,-34px) scale(1.8)`, opacity: 0 }], { duration: 1500, fill: 'forwards' }); setTimeout(() => e.remove(), 1600); }
     if (Z.phase === 'good' && !Z.did) {
-      Z.did = 1; SND.magic(); say(T('potion.good'), 150, 1600);
+      Z.did = 1; SND.magic(); say(T('potion.good'), 150, 1600, 0, false, true);
       for (let i = 0; i < 40; i++) { const a = -1.57 + rnd(-0.55, 0.55), d = rnd(40, 110); flyParticle(mx, my, Math.cos(a) * d, Math.sin(a) * d, ['#ffd447', '#ff5d73', '#6fb8ff', '#3ddc84', '#ffffff', '#b06cff'][i % 6], rnd(4, 6), rnd(900, 1500), 60); }
       flashAt(mx, my - 6, Z.color, 40);
     }
     if (Z.phase === 'boom' && !Z.did) {
-      Z.did = 1; SND.magic(); say(T('potion.bad'), 450, 1800);
+      Z.did = 1; SND.magic(); say(T('potion.bad'), 450, 1800, 0, false, true);
       flashAt(mx, my - 8, '#ffcf70', 110); burstAt(mx, my - 8, 36, ['#ffd447', '#ff9a2a', '#ff5d73', '#ffffff'], 80);
       for (let i = 0; i < 9; i++) { const e = mkFx('fxp', mx + rnd(-12, 12), my - 6, { '--pc': '#555' }); e.style.animation = 'none'; e.style.borderRadius = '50%'; const sz = rnd(14, 26); e.style.width = e.style.height = sz + 'px'; e.style.margin = -sz / 2 + 'px'; e.style.background = i % 2 ? '#4a4a55' : '#2e2e38'; e.style.boxShadow = 'none'; e.animate([{ transform: 'translate(0,0) scale(.3)', opacity: .95 }, { transform: `translate(${rnd(-60, 60)}px,${-rnd(30, 90)}px) scale(1.6)`, opacity: 0 }], { duration: rnd(1100, 1800), fill: 'forwards', delay: i * 40 }); setTimeout(() => e.remove(), 2000 + i * 40); }
     }
@@ -842,7 +842,7 @@
       im.animate([{ transform: `translate(${px - 20}px, ${py - 12}px) scale(.2) rotate(-14deg)`, opacity: 0 }, { transform: `translate(${px - 20}px, ${py - 48}px) scale(1.25) rotate(6deg)`, opacity: 1, offset: .55 }, { transform: `translate(${px - 20}px, ${py - 40}px) scale(1) rotate(0)`, opacity: 1 }], { duration: 420, easing: 'cubic-bezier(.2,1.5,.4,1)', fill: 'forwards' });
       setTimeout(() => { if (hatItem === im) im.animate([{ transform: `translate(${px - 20}px, ${py - 40}px)` }, { transform: `translate(${px - 20}px, ${py - 46}px)` }, { transform: `translate(${px - 20}px, ${py - 40}px)` }], { duration: 700, iterations: 4, easing: 'ease-in-out' }); }, 440);
       burstAt(px, py - 30, 18, ['#ffffff', '#ffd447', '#9a74e0', '#6fb8ff'], 36); SND.magic();
-      setTimeout(() => say(T('hat.' + H.item), 0, 1800, 50), 150);
+      setTimeout(() => say(T('hat.' + H.item), 0, 1800, 50, false, true), 150);
     }
     if (H.phase === 'on' && hatItem) { const im = hatItem; hatItem = null; const r = im.getBoundingClientRect(), p = liftEl2.getBoundingClientRect(); burstAt(r.left - p.left + 20, r.top - p.top + 22, 16, ['#ffffff', '#ffd447', '#9a74e0'], 34); im.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 160, fill: 'forwards' }); setTimeout(() => im.remove(), 180); SND.magic(); }
   }
@@ -903,11 +903,11 @@
   // сколько висит реплика: по длине текста (≈ скорость чтения) и множителю из настроек
   const shoutDur = (text, ms) => Math.round(Math.max(ms, 1600 + String(text).length * 65) * (CFG.sayTime ?? 1.5));
   // реплики не чаще, чем через «паузу» после показа предыдущей (по умолчанию 2 с); во время портала паузы нет
-  function say(text, delay = 0, ms = 1200, up = 0, force = false) {
+  function say(text, delay = 0, ms = 1200, up = 0, force = false, prio = false) {
     const now = performance.now();
     if (!force) {
-      if (!CFG.say || quiet() || Math.random() * 100 >= (CFG.sayChance ?? 100)) return;
-      if (!portal && now < lastSayEnd + (CFG.sayGap ?? 2) * 1000) return;
+      if (!CFG.say || quiet() || (!prio && Math.random() * 100 >= (CFG.sayChance ?? 100))) return;
+      if (!prio && !portal && now < lastSayEnd + (CFG.sayGap ?? 2) * 1000) return;   // важные реплики (улов, зелье, фокус) перебивают текущую
     }
     const dur = shoutDur(text, ms);
     lastSayEnd = now + delay + dur; shoutQ = { at: now + delay, text, ms: dur, up };
