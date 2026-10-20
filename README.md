@@ -43,7 +43,7 @@ Download the archive for your system from the [Releases](../../releases) page an
   right-click it and choose *Open*, or run `xattr -cr Kotomag.app` once.
   The hotkey is read by a small helper that needs no special permissions.
 - **Windows**: `Kotomag-win.zip`, then run `Kotomag.exe`. SmartScreen may warn about an unknown publisher (the app is unsigned).
-  A tray icon opens the settings or quits the app. *This build is new and has not been tested on real Windows hardware yet. Bug reports are welcome.*
+  A tray icon opens the settings or quits the app.
 
 Settings are stored in your user data folder (`config.json`, `log.txt`).
 
