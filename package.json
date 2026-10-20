@@ -1,0 +1,45 @@
+{
+  "name": "kotomag",
+  "productName": "Kotomag",
+  "version": "0.14.0",
+  "description": "A pixel-art wizard cat that lives on your desktop: activities, jokes, fishing, portals, system remarks, 2 languages and a sarcasm dial.",
+  "main": "src/main.js",
+  "author": "Asfsag",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asfsag/kotomag.git"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build:mac": "bash scripts/build-mac.sh",
+    "dist:win": "electron-builder --win zip --x64"
+  },
+  "devDependencies": {
+    "electron": "^44.6.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "io.github.asfsag.kotomag",
+    "productName": "Kotomag",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "build/icon.png",
+      "package.json"
+    ],
+    "electronLanguages": [
+      "en-US",
+      "ru"
+    ],
+    "win": {
+      "icon": "build/icon.png",
+      "target": [
+        "zip"
+      ],
+      "signExecutable": false
+    }
+  }
+}
