@@ -8,15 +8,17 @@ your computer: the Trash, memory, CPU, disk, battery and how long you have been 
 Everything speaks **English or Russian** and has a **sarcasm dial** from sweet to venomous.
 
 
-| Fishing (six fish drawn for the game) | Portal |
-|---|---|
-| ![fish](docs/fish.png) | ![portal](docs/portal.png) |
+| Fishing | Portal | Potion |
+|---|---|---|
+| ![fishing](docs/fishing.png) | ![portal](docs/portal.png) | ![potion](docs/potion.png) |
 
-| Speech bubbles | System report |
-|---|---|
-| ![bubbles](docs/speech-bubbles.png) | ![report](docs/system-report.png) |
+| Hat trick | Fireworks | Soap bubbles |
+|---|---|---|
+| ![hat](docs/hat.png) | ![fireworks](docs/fireworks.png) | ![bubbles](docs/bubbles.png) |
 
-![settings](docs/settings.png)
+| System report | Settings |
+|---|---|
+| ![report](docs/report.png) | ![settings](docs/settings.png) |
 
 ## Features
 
