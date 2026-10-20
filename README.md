@@ -1,11 +1,12 @@
 # Kotomag
 
+[Русский](README.ru.md)
+
 A pixel-art **wizard cat** that lives at the bottom of your screen. He walks around, goes fishing, brews potions
 (sometimes they explode), jumps through portals, chases a red laser dot, tells jokes, and quietly keeps an eye on
 your computer: the Trash, memory, CPU, disk, battery and how long you have been working without a break.
 Everything speaks **English or Russian** and has a **sarcasm dial** from sweet to venomous.
 
-[Русский](README.ru.md)
 
 | Fishing (six fish drawn for the game) | Portal |
 |---|---|

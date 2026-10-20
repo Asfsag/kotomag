@@ -1,7 +1,7 @@
 {
   "name": "kotomag",
   "productName": "Kotomag",
-  "version": "0.14.1",
+  "version": "0.14.0",
   "description": "A pixel-art wizard cat that lives on your desktop: activities, jokes, fishing, portals, system remarks, 2 languages and a sarcasm dial.",
   "main": "src/main.js",
   "author": "Asfsag",
